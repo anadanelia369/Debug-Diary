@@ -68,7 +68,7 @@
 
 ---
 
-## 🛠️ Post-100/100 Polish (revisiting the project after Levan's feedback)
+## 🛠️ Post-100/100 Polish (revisiting the project after submission)
 
 ### 🚫 001 — The Assertion That Could Never Fail
 
