@@ -117,3 +117,14 @@
 **What I found:** The expected value was built as a full date, but the element it compared against was only ever a month+year label — the two could never have matched.
 
 **What I changed:** Rebuilt the expected string to match the header's actual format. 📏
+
+---
+### 📅 012 - The Date That Was Only Wrong at the End of the Month
+
+**What happened:** Three tests failed at once with `NoSuchElement` on `05/10/2026`, tests that had passed for weeks.
+
+**What I found:** Nothing had changed on the site. My tests pick dates with `plusDays(7)` and `plusDays(13)`, which near the end of a month land in the next month, while the calendar only shows the current one. The dynamic dates were fine, they just never accounted for the month boundary.
+
+**What I changed:** `selectDate()` now checks whether the target date is visible, and if not, clicks "Next month" first. 🗓️
+
+---
