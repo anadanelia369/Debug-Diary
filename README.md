@@ -128,3 +128,22 @@
 **What I changed:** `selectDate()` now checks whether the target date is visible, and if not, clicks "Next month" first. 🗓️
 
 ---
+
+### 🧾 013 - The Error Message That Hid Three Failed Requests
+
+**What happened:** On a web testing project, a search flow showed a generic "Something happened" message with a prompt to search again, instead of results.
+
+**What I found:** The browser console I captured during reproduction recorded this sequence (timestamps are console log times, not request durations):
+
+| Console time | What was logged |
+|---|---|
+| 12:21:08.653 | A request failed: HTTP `400`, message `Invalid station code.`, application error code `1000171` |
+| 12:21:09.570 | Navigation to the results selection page |
+| 12:21:14.024 | `POST` request failed: `400 Bad Request` |
+| 12:21:14.491 | A second `POST` request failed: `400 Bad Request` |
+
+The logs added technical context to the visible error, but I could not prove that the earlier `Invalid station code.` message explained the two later failures, so I did not link them. The root cause stays unconfirmed. I had console logs only, not the Network tab payloads.
+
+**What I changed:** My notes now keep three things apart: what I saw on screen, what the logs recorded, and what is still unconfirmed. Next time I will also open the Network tab and compare request payloads and responses before drawing a conclusion. 🔍
+
+---
