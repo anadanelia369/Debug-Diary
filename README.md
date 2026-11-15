@@ -147,3 +147,13 @@ The logs added technical context to the visible error, but I could not prove tha
 **What I changed:** My notes now keep three things apart: what I saw on screen, what the logs recorded, and what is still unconfirmed. Next time I will also open the Network tab and compare request payloads and responses before drawing a conclusion. 🔍
 
 ---
+
+### 🔊 014 - The Text-to-Speech That Skipped the "++"
+
+**What happened:** While listening to an audiobook of "Thinking in Java" in a text-to-speech app, the narrator read "C++" as "C".
+
+**What I found:** Testing more inputs showed where it starts to fail. Read correctly: `C+`, `2+2`, `+1`, `C#`, `.NET`, `Node.js`. Skipped: `C++`, `2++`, `1++`, `++2`. A single "+" works, two in a row do not. This changes the meaning of the text, because C and C++ are different languages.
+
+**What I did:** Spent five minutes on extra inputs, testing the boundary at the number of consecutive "+" characters, and turned a vague observation into a precise, reproducible bug report. [Read the LinkedIn post](https://lnkd.in/p/dP4z6ZHs) 🔊
+
+---
